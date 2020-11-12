@@ -1,0 +1,86 @@
+<view>
+  <!-- <van-transition show="{{showTransition}}" custom-class="block">
+    
+  </van-transition> -->
+  <view class="step">
+      <view style="width: 60%"><van-steps steps="{{ steps }}" active="{{ active }}" /></view>
+      <view><van-button type="primary" size="normal" plain bind:click="handleChangeStatus" disabled="{{disabled}}">切换下一状态</van-button></view>
+    </view>
+    <scroll-view style="background: #f9f9f9; height: 90vh" scroll-y="{{true}}">
+      <view class="content">
+        <view class="input">
+          <van-cell-group>
+            <van-field
+              label="标题"
+              label-class="label-title-class"
+              value="{{title}}"
+              type="textarea"
+              placeholder="请输入标题"
+              title-width="3.2rem"
+              autosize
+              size="large"
+              border="{{ true }}"
+              data-index="{{index}}"
+              bind:change="handleInputTitleChange"
+            >
+            </van-field>
+          </van-cell-group>
+          <van-cell-group class="cell-group" wx:for="{{issueArr}}" wx:for-index="index" wx:key="index">
+            <van-field
+              label="问题"
+              value="{{item.topic}}"
+              label-class="label-title-class"
+              type="textarea"
+              placeholder="请输入问题"
+              autosize
+              size="large"
+              title-width="3.2rem"
+              border="{{ true }}"
+              data-index="{{index}}"
+              bind:change="handleInputIssueChange"
+            >
+              <view class="right-icon" slot="right-icon" ><van-icon name="delete" color="#f57373" size="18px" data-index="{{index}}" bind:click="handleDeleteIssue" /></view>
+            </van-field>
+            <van-checkbox-group bind:change="handleInputCorrectAnswer" value="{{checkboxValue}}">
+              <van-field
+                wx:for="{{item.options}}"
+                wx:for-index="idx"
+                wx:for-item="ite"
+                wx:key="idx"
+                placeholder="选项"
+                border="{{ true }}"
+                type="textarea"
+                title-width="3.2rem"
+                value="{{ite}}"
+                autosize
+                label="选项"
+                size="large"
+                data-index="{{index}}"
+                data-idx="{{idx}}"
+                bind:change="handleInputOptionsChange"
+              >
+                <view slot="right-icon">
+                  <van-checkbox name="{{index}}{{idx}}"></van-checkbox>
+                </view>
+              </van-field>
+            </van-checkbox-group>
+            <van-field
+              border="{{ true }}"
+              label="选项"
+              size="large"
+              readonly="{{true}}"
+              bind:change="onChange">
+                <view class="left-icon" slot="left-icon" ><van-icon name="delete" color="#f57373" size="18px" data-index="{{index}}" bind:click="handleDeleteOptions" /></view>
+                <view class="right-icon" slot="right-icon"><van-icon name="plus" size="20px" data-index="{{index}}" bind:click="handleCreateOptions" /></view>
+            </van-field>
+          </van-cell-group>
+        </view>
+        <view style=" margin: auto; height: 130px; display: flex; justify-content: space-between; align-items: center; flex-direction: column">
+          <van-button style="width: 220px;" custom-style="border: none" size="large" type="default" bind:click="handleAddQuestion" disabled="{{disabled}}">添加问题</van-button>
+          <van-button style="width: 220px;" custom-style="border: none" size="large" type="primary" bind:click="handleSubmit" disabled="{{disabled}}">提交</van-button>
+        </view>
+      </view>
+    </scroll-view>
+</view>
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />

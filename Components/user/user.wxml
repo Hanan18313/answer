@@ -1,0 +1,48 @@
+<view class="container">
+  <view wx:if="{{isUserPage}}">
+    <view class="header">
+      <view class="avatar">
+        <van-image
+          round
+          width="4rem"
+          height="4rem"
+          src="{{avatar}}"
+        />
+      </view>
+      <view class="userName">{{userInfo.name}}</view>
+    </view>
+    <view class="content">
+      <van-cell-group>
+        <van-cell size="large" title="元宝分商城" is-link url="">
+          <view class="icon-slot" slot="icon">
+            <van-icon name="shopping-cart-o" color="blue" size="1.2rem" />
+          </view>
+        </van-cell>
+        <van-cell size="large" title="元宝分记录" is-link url="../../pages/scoreList/scoreList">
+          <view class="icon-slot" slot="icon">
+            <van-icon name="clock-o" color="green" size="1.2rem" />
+          </view>
+        </van-cell>
+        <van-cell wx:if="{{isStaff}}" size="large" title="后台管理"  is-link url="../../pages/admin/home/home" >
+          <view class="icon-slot" slot="icon"><van-icon name="setting-o" color="green" size="1.2rem" /></view>
+        </van-cell>
+      </van-cell-group>
+    </view>
+  </view>
+  <view wx:if="{{isLoginPage}}" class="header">
+    <van-button size="normal" type="primary"  bind:click="wxAuthLogin">微信授权登陆</van-button>
+  </view>
+</view>
+<van-dialog
+  use-slot
+  title="登陆提示"
+  show="{{ show }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="getUserInfo"
+  confirmButtonText='前往登陆'
+  confirm-button-color="#1989fa"
+>
+<view class="dialog-slot"><text>您还未登录是否选择登陆</text></view>
+</van-dialog>

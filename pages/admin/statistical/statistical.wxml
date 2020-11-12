@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="tab">
+    <van-tabs active="{{ active }}" bind:change="handleChangeTabs" animated swipeable>
+      <van-tab title="明细">明细</van-tab>
+      <van-tab title="统计">
+        <view class="chart">
+          <antv-f2 class="chart-f2" onInit="{{onInitChart}}"></antv-f2>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </view>
+</view>

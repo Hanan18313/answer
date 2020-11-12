@@ -1,0 +1,20 @@
+<view class="container">
+  <view class="header"></view>
+  <view class="content">
+    <view class="data-list" wx:for="{{dataSource}}" wx:key="index">
+      <view class="topic">{{index+1}}. {{item.topic}}</view>
+      <view class="options">
+        <view wx:for="{{item.options}}" wx:for-item="it" wx:for-index="idx" wx:key="idx">
+          <view class="options-p">{{EnIndexArr[idx]+'. '}}{{it}}</view>
+        </view>
+        <!-- <van-checkbox-group value="{{ radio }}" 
+        data-id="{{index}}" bind:change="handleChangeRadio">
+          <van-checkbox label-disabled wx:for="{{item.options}}" wx:for-item="it" wx:for-index="idx" wx:key="idx" name="{{index}}{{idx}}"  label-class="radio-label-class">
+            <view>{{EnIndexArr[idx]+'. '}}{{it}}</view>
+          </van-checkbox>
+        </van-checkbox-group> -->
+      </view>
+    </view>
+  </view>
+  <view class="footer"></view>
+</view>

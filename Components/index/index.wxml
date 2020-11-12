@@ -1,0 +1,84 @@
+<view class="container">
+  <view class="activity_list">
+    <scroll-view scroll-y="{{true}}" style="height:93vh; padding-bottom: 120rpx" bindscrolltolower='bindScrollToLower'>
+      <!-- <view><image style="width:100%; height: 150px" src="http://iph.href.lu/375x200?text=占位图"></image></view> -->
+      <view class="page-section page-section-spacing swiper">
+        <swiper indicator-dots="{{indicatorDots}}"
+          autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 200px">
+          <block wx:for="{{imgArr}}" wx:key="index">
+            <swiper-item>
+              <view class="swiper-item" style="display:flex; justify-content:flex-end; align-items:center">
+                <view style="position: absolute; top:10px; left:22px; font-size:22px; color: #3b50e4"><text>{{item.name}}</text></view>
+                <view style="position: absolute; top: 53px; left: 10px; width: 120px"><text>{{item.content}}</text></view>
+                <image src="{{item.img}}" style="width: 70%; height:180px"></image>
+              </view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <view style="width: 92%; margin: auto">
+        <view style="height: 80rpx"></view>
+        <view class="progress">
+          <!-- <view class="progress_img"></view> -->
+          <view class="progress_info">
+            <view wx:if="{{ongoingIssue.length === 0}}" style="height: 100px; background: #fff;color: #868686; line-height: 100px; text-align:center">
+              <text>暂无任何问答！</text>
+            </view>
+            <view wx:if="{{ongoingIssue.length !== 0}}">
+              <van-cell-group>
+                <van-cell size="large" use-label-slot value="查看" border="{{ false }}" value-class="value-class" clickable="{{true}}" data-id="{{ongoingIssue.id}}" bindtap="entryAnswer">
+                  <view slot="title" style="display:flex; justify-content: space-between">
+                    <view>{{ongoingIssue.title}}</view>
+                    <view style="float:right"><van-tag plain type="success">{{ongoingIssue.status}}</van-tag></view>
+                  </view>
+                  <view slot="label" style="width: 240px;padding-top: 30px">
+                    <text>问卷截止时间：{{ongoingIssue.deadline}}</text>
+                  </view>
+                  <view slot="right-icon" style="display:flex">
+                    <van-icon name="arrow" size="18px"/>
+                  </view>
+                </van-cell>
+              </van-cell-group>
+            </view>
+          </view>
+        </view>
+        <view style="height:80rpx"></view>
+        <view class="issue_history">
+          <view style="margin: 20rpx 40rpx; font-size: 28rpx; color: #868686"><text>历史问卷</text></view>
+            <van-cell-group wx:for="{{endedIssue}}" wx:key='index'>
+              <view style="border-bottom: 2px solid #eee"></view>
+              <van-cell size="large" use-label-slot value="查看" border="{{ false }}" value-class="value-class" clickable="{{true}}" data-id="{{item.id}}" bind:click="entryAnswer">
+                <view slot="title" style="display:flex; justify-content: space-between">
+                  <view>{{item.title}}</view>
+                  <view style="float:right"><van-tag plain type="danger">{{item.status}}</van-tag></view>
+                </view>
+                <view slot="label" style="width: 240px;padding-top: 20px">
+                  <text>问卷提交于：{{item.answer[0].answerTime}}</text>
+                </view>
+                <view slot="right-icon" style="display:flex">
+                  <van-icon name="arrow" size="18px"/>
+                </view>
+              </van-cell>
+            </van-cell-group>
+          <view >
+            <!-- <view class="activity_item" data-id="{{item.id}}" data-type="" bindtap="getActivityContent">
+              <view class="activity_title"></view>
+              <view class="activity-content">
+                <view class="content">
+                  <view class="title"><text>{{item.title}}</text></view>
+                  <view style="display:flex; justify-content: space-between"><view class="date"><text>{{item.createTime}}</text></view><view><text style="font-size: 14px; color: {{item.color}}">{{item.status}}</text></view></view>
+                </view>
+                <view class="activity_img">
+                  <view class="back_img"></view>
+                </view>
+              </view>
+            </view> -->
+          </view>
+        </view>
+      </view>
+      <view class="load_more">
+        <i-load-more tip="{{load_tip}}" loading="{{load_more}}"/>
+      </view>
+    </scroll-view>
+  </view>
+</view>

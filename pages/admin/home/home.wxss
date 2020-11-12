@@ -1,0 +1,84 @@
+/* pages/admin/home/home.wxss */
+.container {
+  /* padding-bottom: 10px; */
+}
+
+.list {
+  padding-top: 10px;
+}
+
+.panel {
+  border-bottom: #f9f9f9 3px solid;
+  
+}
+.panel-header {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+
+}
+.panel-content {
+  font-size: 14px;
+  color: #8c8c8c;
+}
+
+.left-header {
+  width: 80%;
+}
+.date {
+  display: flex;
+  margin: 6px 0;
+}
+.date view {
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+}
+.desc {
+  display: flex;
+  margin: 6px 0;
+}
+.desc view {
+  width: 20%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 5px;
+}
+.content {
+  display: flex;
+}
+.detail {
+  height: 3rem;
+  width: 35%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.oper {
+  height: 3rem;
+  width: 65%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.panel {
+	background:#fff;
+	border:1px solid #eee;
+	margin: 0 10px 10px;
+	box-shadow:0 0 1px #fff;
+}
+
+.chart, .delete, .edit, .view {
+  width: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  
+}
+.chart text, .edit text, view text {
+  font-size: 14px;
+}
+.delete text {
+  font-size: 14px;
+  color: #f57373;
+}

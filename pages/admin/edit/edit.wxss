@@ -1,0 +1,23 @@
+
+.step{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+}
+.label-title-class{
+  color: #ab5c5c !important;
+  font-size: 18px !important;
+}
+
+.cell-group {
+  margin: 0 10px;
+}
+
+.left-icon, .right-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+}

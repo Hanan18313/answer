@@ -1,0 +1,15 @@
+<view class="container">
+  <view class="content">
+    <IndexComponent wx:if="{{activeTabbar === 'home'}}" bindmyevent="onMyEvent"></IndexComponent>
+    <UserComponent wx:if="{{activeTabbar === 'user'}}"></UserComponent>
+  </view>
+  <view class="footer">
+    <view class="tabbar">
+      <van-tabbar active="{{ activeTabbar }}" bind:change="handleChangeTabbar">
+      <van-tabbar-item name="home" icon="home-o">首页</van-tabbar-item>
+      <van-tabbar-item name="user" icon="user-o">我的</van-tabbar-item>
+    </van-tabbar>
+    </view>
+  </view>
+</view>
+<van-dialog id="van-dialog" />

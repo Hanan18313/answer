@@ -1,0 +1,15 @@
+
+.cell-group {
+  margin: 0 10px;
+}
+
+.left-icon, .right-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 26px;
+}
+.label-title-class{
+  color: #ab5c5c !important;
+  font-size: 18px !important;
+}

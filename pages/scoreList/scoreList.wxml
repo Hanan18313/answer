@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="list" wx:if="{{scoreList.length !== 0}}">
+    <van-cell-group>
+      <van-cell wx:for="{{scoreList}}" wx:key="index" title="元宝分+{{item.QuestionnaireAnswer_score}}" value="{{item.QuestionnaireAnswer_answerTime}}" is-link url="../scoreDetail/scoreDetail?issueId={{item.QuestionnaireAnswer_titleId}}"/>
+    </van-cell-group>
+  </view>
+  <view wx:if="{{scoreList.length === 0}}">
+    <van-empty description="暂无任何记录" />
+  </view>
+</view>

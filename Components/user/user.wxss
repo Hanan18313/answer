@@ -1,0 +1,20 @@
+/* Components/user/user.wxss */
+.header {
+  height: 26vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+}
+.icon-slot {
+  width: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-slot {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,23 @@
+<view class="container">
+  <view style="background: #f9f9f9">
+    <view class="header"></view>
+    <view class="content">
+      <view class="data-list" wx:for="{{dataSource}}" wx:key="index">
+        <view class="topic">{{index+1}}. {{item.topic}}</view>
+        <view class="options">
+          <van-checkbox-group value="{{ radio }}" 
+          data-id="{{index}}" bind:change="handleChangeRadio" disabled="{{disabled}}">
+            <van-checkbox label-disabled wx:for="{{item.options}}" wx:for-item="it" wx:for-index="idx" wx:key="idx" name="{{index}}{{idx}}"  custom-class="custom-class">
+              <view>{{EnIndexArr[idx]+'. '}}{{it}}</view>
+            </van-checkbox>
+          </van-checkbox-group>
+        </view>
+      </view>
+    </view>
+    <view class="footer">
+      <view>正确答案为：{{correctResult}}</view>
+    </view>
+  </view>
+</view>
+<van-notify id="van-notify" />
+<van-toast id="van-toast" />

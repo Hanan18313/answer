@@ -1,0 +1,61 @@
+<view class="container">
+  <view wx:if="{{questionnaireArr.length !== 0}}" class="list">
+   <scroll-view scroll-y="{{true}}" style="height: 92vh">
+    <view class="panel" wx:for="{{questionnaireArr}}" wx:key="index">
+      <view class="panel-header" slot="header">
+          <view class="left-header">
+            <view class="title">{{item.title}}</view>
+            <view class="panel-content">
+              <view class="date">
+                <view><van-icon name="clock-o" /></view>
+                <text>创建时间：{{item.createTime}}</text>
+              </view>
+              <view class="desc">
+                <view>
+                  <view><van-icon name="user-circle-o" /></view>
+                  <text>{{item.answer.length}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="status">
+            <van-tag wx:if="{{item.status === '未开始'}}" type="primary" plain>{{item.status}}</van-tag>
+            <van-tag wx:if="{{item.status === '进行中'}}" type="success" plain>{{item.status}}</van-tag>
+            <van-tag wx:if="{{item.status === '已关闭'}}" type="danger" plain>{{item.status}}</van-tag>
+          </view>
+        </view>
+        <view class="content">
+          <view class="detail">
+            <view class="chart" data-issueId="{{item.id}}" bindtap="handleStatistical">
+              <van-icon name="bar-chart-o" size="18px" /><text>统计</text>
+            </view>
+          </view>
+          <view class="oper">
+            <view class="view" data-issueId="{{item.id}}" bindtap="handlePreview">
+              <van-icon name="browsing-history-o" size="18px"  /><text>预览</text>
+            </view>
+            <view class="edit" data-issueId="{{item.id}}" bindtap="handleEdit">
+              <van-icon name="edit" size="18px" /><text>编辑</text>
+            </view>
+            <view class="delete" data-issueId="{{item.id}}" bindtap="handleDelete">
+              <van-icon name="delete" size="18px" color="#f57373" /><text>删除</text>
+            </view>
+          </view>
+        </view>
+    </view>
+   </scroll-view>
+  </view>
+  <view class="tabbar">
+    <van-tabbar>
+      <van-tabbar-item style="background: #eee">
+        <view bindtap="handleCreate">
+          <van-icon size="28px" color="#187fd2" name="plus" />
+        </view>
+      </van-tabbar-item>
+    </van-tabbar>
+  </view>
+  <view wx:if="{{questionnaireArr.length === 0}}" class="list">
+    <van-empty image="error" description="描述文字" />
+  </view>
+</view>
+<van-toast id="van-toast" />
